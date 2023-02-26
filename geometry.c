@@ -62,6 +62,11 @@ void error(char *string)
         string++;
         col++;
     }
+    if (*string == '(')
+    {
+        printf("Error at column %d: expected ')'\n", col);
+        exit(EXIT_FAILURE);
+    }
     string++;
     col++;
 

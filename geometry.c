@@ -15,86 +15,102 @@ typedef struct Circle {
 
 void error(char *string)
 {
-    int col = 1;
     char circle[] = "circle";
     int i = 0;
 
     while (*string != 'c')
     {
         string++;
-        col++;
     }
 
     while ((*string != '(') && (*string != ')'))
     {
         if (*string != circle[i])
         {
-            printf("Error at column %d: expected 'circle', 'triangle' or 'polygon'\n", i + 1);
+            printf("Error: expected 'circle', 'triangle' or 'polygon'\n");
             exit(EXIT_FAILURE);
         }
         i++;
         string++;
-        col++;
     }
     if (*string == ')')
     {
-        printf("Error at column %d: expected '('\n", col);
+        printf("Error: expected '('\n");
         exit(EXIT_FAILURE);
     }
     string++;
-    col++;
 
     if ((*string == '(') || (*string == ')'))
     {
-        printf("Error at column %d: expected '<double>'\n", col);
+        printf("Error: expected '<double>'\n");
         exit(EXIT_FAILURE);
     }
 
+    int dots = 0;
+    int minuses = 0;
     while (*string != ',')
     {
+        if (*string == '.')
+        {
+            dots++;
+        }
+        if (*string == '-')
+        {
+            minuses++;
+        }
+        if (dots > 2 || minuses > 2)
+        {
+            printf("Error: syntax error\n");
+            exit(EXIT_FAILURE);
+        }
         if ((*string != '.') && ((*string < '0') || (*string > '9')) && (*string != ' ') && (*string != '-'))
         {
-            printf("Error at column %d: expected '<double>'\n", col);
+            printf("Error: expected '<double>'\n");
             exit(EXIT_FAILURE);
         }
         string++;
-        col++;
     }
     string++;
-    col++;
 
+    dots = 0;
     while ((*string != ')') && (*string != '('))
     {
+        if (*string == '.')
+        {
+            dots++;
+        }
+        if (dots > 1)
+        {
+            printf("Error: syntax error\n");
+            exit(EXIT_FAILURE);
+        }
         if (*string == '-')
         {
-            printf("Error at column %d: the radius cannot be negative\n", col);
+            printf("Error: the radius cannot be negative\n");
             exit(EXIT_FAILURE);
         }
         if ((*string != '.') && ((*string < '0') || (*string > '9')) && (*string != ' '))
         {
-            printf("Error at column %d: expected '<double>'\n", col);
+            printf("Error: expected '<double>'\n");
             exit(EXIT_FAILURE);
         }
         string++;
-        col++;
     }
     if (*string == '(')
     {
-        printf("Error at column %d: expected ')'\n", col);
+        printf("Error: expected ')'\n");
         exit(EXIT_FAILURE);
     }
     string++;
-    col++;
 
     while ((*string != '\n') && (*string != '\0'))
     {
         if (*string != ' ')
         {
-            printf("Error at column %d: unexpected token\n", col);
+            printf("Error: unexpected token\n");
             exit(EXIT_FAILURE);
         }
         string++;
-        col++;
     }
 }
 

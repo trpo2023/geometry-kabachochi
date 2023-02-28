@@ -49,12 +49,28 @@ void error(char *string)
         printf("Error at column %d: expected '<double>'\n", col);
         exit(EXIT_FAILURE);
     }
+
+    while (*string != ',')
+    {
+        if ((*string != '.') && ((*string < '0') || (*string > '9')) && (*string != ' ') && (*string != '-'))
+        {
+            printf("Error at column %d: expected '<double>'\n", col);
+            exit(EXIT_FAILURE);
+        }
+        string++;
+        col++;
+    }
     string++;
     col++;
 
     while ((*string != ')') && (*string != '('))
     {
-        if ((*string != '.') && (*string != ',') && ((*string < '0') || (*string > '9')) && (*string != ' '))
+        if (*string == '-')
+        {
+            printf("Error at column %d: the radius cannot be negative\n", col);
+            exit(EXIT_FAILURE);
+        }
+        if ((*string != '.') && ((*string < '0') || (*string > '9')) && (*string != ' '))
         {
             printf("Error at column %d: expected '<double>'\n", col);
             exit(EXIT_FAILURE);

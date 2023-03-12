@@ -42,12 +42,13 @@ void error(char *string)
 
     if ((*string == '(') || (*string == ')'))
     {
-        printf("Error: expected '<double>'\n");
+        printf("Error: unexpected brackets\n");
         exit(EXIT_FAILURE);
     }
 
     int dots = 0;
     int minuses = 0;
+    int arg = 0;
     while (*string != ',')
     {
         if (*string == '.')
@@ -57,6 +58,10 @@ void error(char *string)
         if (*string == '-')
         {
             minuses++;
+        }
+        if ((*(string + 1) == ' ' || *(string + 1) == ',') && (*string >= 48 && *string <= 57))
+        {
+            arg += 1;
         }
         if (dots > 2 || minuses > 2)
         {
@@ -75,6 +80,10 @@ void error(char *string)
     dots = 0;
     while ((*string != ')') && (*string != '('))
     {
+        if (*string >= 48 && *string <= 57 && (*(string + 1) == ')' || *(string + 1) == ' '))
+        {
+            arg += 1;
+        }
         if (*string == '.')
         {
             dots++;
@@ -95,6 +104,11 @@ void error(char *string)
             exit(EXIT_FAILURE);
         }
         string++;
+    }
+    if (arg != 3)
+    {
+        printf("Error: undefined arguments\n");
+        exit(EXIT_FAILURE);
     }
     if (*string == '(')
     {

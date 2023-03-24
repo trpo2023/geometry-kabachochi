@@ -28,7 +28,6 @@ void error(char *string)
         if (*string != circle[i])
         {
             printf("Error: expected 'circle', 'triangle' or 'polygon'\n");
-            exit(EXIT_FAILURE);
         }
         i++;
         string++;
@@ -36,14 +35,12 @@ void error(char *string)
     if (*string == ')')
     {
         printf("Error: expected '('\n");
-        exit(EXIT_FAILURE);
     }
     string++;
 
     if ((*string == '(') || (*string == ')'))
     {
         printf("Error: unexpected brackets\n");
-        exit(EXIT_FAILURE);
     }
 
     int dots = 0;
@@ -66,12 +63,10 @@ void error(char *string)
         if (dots > 2 || minuses > 2)
         {
             printf("Error: syntax error\n");
-            exit(EXIT_FAILURE);
         }
         if ((*string != '.') && ((*string < '0') || (*string > '9')) && (*string != ' ') && (*string != '-'))
         {
             printf("Error: expected '<double>'\n");
-            exit(EXIT_FAILURE);
         }
         string++;
     }
@@ -91,29 +86,24 @@ void error(char *string)
         if (dots > 1)
         {
             printf("Error: syntax error\n");
-            exit(EXIT_FAILURE);
         }
         if (*string == '-')
         {
             printf("Error: the radius cannot be negative\n");
-            exit(EXIT_FAILURE);
         }
         if ((*string != '.') && ((*string < '0') || (*string > '9')) && (*string != ' '))
         {
             printf("Error: expected '<double>'\n");
-            exit(EXIT_FAILURE);
         }
         string++;
     }
     if (arg != 3)
     {
         printf("Error: undefined arguments\n");
-        exit(EXIT_FAILURE);
     }
     if (*string == '(')
     {
         printf("Error: expected ')'\n");
-        exit(EXIT_FAILURE);
     }
     string++;
 
@@ -122,7 +112,6 @@ void error(char *string)
         if (*string != ' ')
         {
             printf("Error: unexpected token\n");
-            exit(EXIT_FAILURE);
         }
         string++;
     }

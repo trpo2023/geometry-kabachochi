@@ -4,7 +4,7 @@ double circle_perimetr(double radius)
 {
     double perimetr;
     perimetr = 2 * M_PI * radius;
-    return perimetr;
+    return perimetr;:::
 }
 
 double circle_square(double radius)

@@ -38,7 +38,7 @@ $(OBJ_DIR)/%.o: %.c
 clean:
 	$(RM) $(APP_PATH) $(OBJ_DIR)/$(SRC_DIR)/*/*.[aod]
 
-run: $(APP_PATH)
+run:
 	./$(APP_PATH) $(DATA_PATH)
 
 .PHONY: clean create run

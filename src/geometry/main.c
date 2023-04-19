@@ -1,10 +1,10 @@
+#include <ctype.h>
 #include <libgeometry/calculator.h>
 #include <libgeometry/lexer.h>
 #include <libgeometry/parser.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include <ctype.h>
 #include <string.h>
 
 int main(int argc, char** argv)
@@ -33,8 +33,7 @@ int main(int argc, char** argv)
             perimetr = circle_perimetr(*(arguments + 2));
             square = circle_square(*(arguments + 2));
             print_circle(square, perimetr);
-            if (arguments != NULL)
-            {
+            if (arguments != NULL) {
                 free(arguments);
             }
         }

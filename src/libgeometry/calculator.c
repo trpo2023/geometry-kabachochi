@@ -1,3 +1,6 @@
+#include <math.h>
+#include <stdio.h>
+
 #include "calculator.h"
 
 double circle_perimetr(double radius)

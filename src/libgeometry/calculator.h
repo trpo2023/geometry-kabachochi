@@ -1,6 +1,4 @@
 #pragma once
-#include <math.h>
-#include <stdio.h>
 
 double circle_perimetr(double radius);
 

@@ -17,13 +17,14 @@ double circle_square(double radius)
     return square;
 }
 
-double point_distance(const point *first, const point *second)
+double point_distance(const point* first, const point* second)
 {
-    double result = sqrt(pow(first->x - second->x, 2) + pow(first->y - second->y, 2));
+    double result
+            = sqrt(pow(first->x - second->x, 2) + pow(first->y - second->y, 2));
     return result;
 }
 
-int circle_collision(const circle *first, const circle *second)
+int circle_collision(const circle* first, const circle* second)
 {
     double dist, rad;
     dist = point_distance(&(first->center), &(second->center));
@@ -34,7 +35,7 @@ int circle_collision(const circle *first, const circle *second)
         return 0;
 }
 
-void print_circle(circle *result)
+void print_circle(circle* result)
 {
     print_name(result);
     printf("--------------------\n");
@@ -42,7 +43,10 @@ void print_circle(circle *result)
     printf("Perimetr = %f\n", result->perimetr);
 }
 
-void print_name(circle *result)
+void print_name(circle* result)
 {
-    printf("circle(%f %f, %f)\n", result->center.x, result->center.y, result->radius);
+    printf("circle(%f %f, %f)\n",
+           result->center.x,
+           result->center.y,
+           result->radius);
 }

@@ -31,7 +31,7 @@ int main(int argc, char** argv)
     printf("Error chechking and getting data!\n\n");
     while (fgets(string1, 39, file) != NULL) {
         int errors;
-        double *arguments;
+        double* arguments;
         to_lower(string1);
         to_string(string1, string2);
         printf("%s\n\n", string2);
@@ -51,9 +51,7 @@ int main(int argc, char** argv)
                 free(arguments);
             }
             j++;
-        }
-        else
-        {
+        } else {
             count--;
         }
         memset(string2, 0, sizeof(string2));
@@ -62,11 +60,10 @@ int main(int argc, char** argv)
 
     circle figures[count];
 
-    for (int z = 0; z < count; z++)
-    {
+    for (int z = 0; z < count; z++) {
         figures[z].center.x = points[z][0];
         figures[z].center.y = points[z][1];
-        figures[z].radius = radiuses[z]; 
+        figures[z].radius = radiuses[z];
         figures[z].square = squares[z];
         figures[z].perimetr = perimetrs[z];
     }
@@ -75,25 +72,20 @@ int main(int argc, char** argv)
 
     printf("Circle info:\n\n");
 
-    if (count == 0)
-    {
+    if (count == 0) {
         printf("Circles not detected!\n");
     }
 
-    for (int z = 0; z < count; z++)
-    {
+    for (int z = 0; z < count; z++) {
         print_circle(&figures[z]);
         printf("Intersects: \n");
-        for (int y = 0; y < count; y++)
-        {
-            if (z != y)
-            {
-               intersects[z][y] = circle_collision(&figures[z], &figures[y]);
-               if (intersects[z][y] != 0)
-               {
+        for (int y = 0; y < count; y++) {
+            if (z != y) {
+                intersects[z][y] = circle_collision(&figures[z], &figures[y]);
+                if (intersects[z][y] != 0) {
                     printf("\t");
                     print_name(&figures[y]);
-               }
+                }
             }
         }
         printf("--------------------\n");

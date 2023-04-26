@@ -18,5 +18,5 @@ CTEST(parser, string_to_double)
     ASSERT_DBL_NEAR(expected[1], real[1]);
     ASSERT_DBL_NEAR(expected[2], real[2]);
 
-    free(expected)
+    free(expected);
 }

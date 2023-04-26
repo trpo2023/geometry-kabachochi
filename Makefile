@@ -43,7 +43,7 @@ $(OBJ_DIR)/%.o: %.c
 	$(COMP) $(CFLAGS) -g3 -O0 -c -o $@ $< -lm
 
 clean:
-	$(RM) $(APP_PATH) $(OBJ_DIR)/$(SRC_DIR)/*/*.[aod]
+	$(RM) $(APP_PATH) $(OBJ_DIR)/$(SRC_DIR)/*/*.[aod] $(TEST_PATH) $(OBJ_DIR)/$(TEST_DIR)/*.[aod]
 
 run:
 	./$(APP_PATH) $(DATA_PATH)
